@@ -23,13 +23,13 @@ BitArray2D::BitArray2D(unsigned int rows, unsigned int columns) {
         throw BitArray2DException("Wrong move doo doo head");
     }
 
-    int numBits = ceil(((double)rows * columns)/8);
+    int itsybitsy = ceil(((double)rows * columns)/8);
     this->rows = rows;
     this->columns = columns;
     //array = new char[((rows*columns)/8)+1];
 
     // setting the size of the character array and allocating memory
-    this->array = (char*) calloc(numBits, sizeof(char));
+    this->array = (char*) calloc(itsybitsy, sizeof(char));
 
 }
 
