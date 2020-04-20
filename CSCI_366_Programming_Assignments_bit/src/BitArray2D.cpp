@@ -16,29 +16,50 @@
 
 #include <math.h>
 #include "BitArray2D.hpp"
+#include "common.hpp"
 
 BitArray2D::BitArray2D(unsigned int rows, unsigned int columns) {
+    if(rows < 1 || columns < 1){
+        throw BitArray2DException("Wrong move doo doo head");
+    }
+
+    int numBits = ceil(((double)rows * columns)/8);
+    this->rows = rows;
+    this->columns = columns;
+    //array = new char[((rows*columns)/8)+1];
+
+    // setting the size of the character array and allocating memory
+    this->array = (char*) calloc(numBits, sizeof(char));
 
 }
 
-
-BitArray2D::~BitArray2D() {
+BitArray2D::~ BitArray2D() {
 
 }
-
 
 bool BitArray2D::get(unsigned int row, unsigned int column){
+
+    if ( row < 0 || rows <= row) {
+        throw BitArray2DException("Wrong move doo doo head");
+    }
+    if (column < 0 || columns <= column){
+        throw BitArray2DException("Wrong move doo doo head");
+    }
    // set array bounds
 
    // get the element
    return get_bit_elem(array, columns, row, column);
 }
 
-
-
 void BitArray2D::set(unsigned int row, unsigned int column){
-   // check array bounds
+    if ( row < 0 || rows <= row) {
+        throw BitArray2DException("Wrong move doo doo head");
+    }
 
+    if (column < 0 || columns <= column){
+        throw BitArray2DException("Wrong move doo doo head");
+    }
+   // check array bounds
    // set the element
    set_bit_elem(array, columns, row, column);
 }
