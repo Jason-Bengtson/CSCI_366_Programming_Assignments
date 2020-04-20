@@ -30,7 +30,7 @@ set_bit_elem:
         sal rsi, cl
         mov rax, rdi
         or [rax], rsi
-        mov rax, 1
+        ;mov rax, 1
         ;mov rax,rdx
         mov rsp, rbp        ; restore stack pointer to before we pushed parameters onto the stack
         pop rbp             ; remove rbp from the stack to restore rsp to initial value
@@ -58,11 +58,18 @@ get_bit_elem:
         sub rbx, rdx
         mov rcx, rbx
         sal rsi, cl
+
+
         mov rax, rdi
-        or [rax], rsi
+        and [rax], rsi
+
+        ;cmp rdi, 0
+
+        setg al
+        movsx rax, al
 
 ;        cmp rax,1
-        mov rax, 1
+        ;mov rax, 1
 
         mov rsp, rbp        ; restore stack pointer to before we pushed parameters onto the stack
         pop rbp             ; remove rbp from the stack to restore rsp to initial value
